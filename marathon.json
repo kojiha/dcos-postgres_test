@@ -1,0 +1,54 @@
+{
+    "id": "/postgres-test",
+    "backoffFactor": 1.15,
+    "backoffSeconds": 1,
+    "container": {
+      "type": "DOCKER",
+      "volumes": [
+        {
+          "persistent": {
+            "type": "root",
+            "size": 100,
+            "constraints": []
+          },
+          "mode": "RW",
+          "containerPath": "pgdata"
+        }
+      ],
+      "docker": {
+        "image": "kojiha/postgres_test",
+        "forcePullImage": false,
+        "privileged": false,
+        "parameters": []
+      }
+    },
+    "cpus": 0.1,
+    "disk": 0,
+    "env": {
+      "PGDATA": "pgdata"
+    },
+    "instances": 1,
+    "maxLaunchDelaySeconds": 3600,
+    "mem": 128,
+    "gpus": 0,
+    "networks": [
+      {
+        "mode": "host"
+      }
+    ],
+    "portDefinitions": [],
+    "residency": {
+      "relaunchEscalationTimeoutSeconds": 10,
+      "taskLostBehavior": "WAIT_FOREVER"
+    },
+    "requirePorts": false,
+    "upgradeStrategy": {
+      "maximumOverCapacity": 0,
+      "minimumHealthCapacity": 0.5
+    },
+    "killSelection": "YOUNGEST_FIRST",
+    "unreachableStrategy": "disabled",
+    "healthChecks": [],
+    "fetch": [],
+    "constraints": []
+  }
