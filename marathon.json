@@ -25,7 +25,7 @@
     "cpus": 0.1,
     "disk": 0,
     "env": {
-      "PGDATA": "pgdata"
+      "PGDATA": "/mnt/mesos/sandbox/pgdata"
     },
     "instances": 1,
     "maxLaunchDelaySeconds": 3600,

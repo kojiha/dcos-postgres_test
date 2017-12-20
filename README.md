@@ -20,8 +20,15 @@ docker push kojiha/postgres_test
 
 (3) modify marathon.json for your environment
 
-At least you must modify docker.image for your image location.
+Customization points are:
 
+- `docker.image`
+- `container.volumes.containerPath` and `env.PGDATA`
+- `container.volumes.persistent.size`
+- `container.volumes.persistent.type`
+- add `POSTGRES_USER`, `POSTGRES_PASSWORD` in `env` as you need
+
+At least you must modify `docker.image` for your image location.  
 
 
 (4) deploy the image to DC/OS via marathon
@@ -32,3 +39,11 @@ or put the marathon.json content into JSON CONFIGUFATION text area of DC/OS 'Run
 
 
 (5) verify if the service is running with a volume attached
+
+
+# Comments
+
+* `container.volumes.containerPath` may not contain any slashes
+
+* The environment variable `PGDATA` must have a path `/mnt/mesos/sandbox/` + the value set in `container.volumes.containerPath`
+
